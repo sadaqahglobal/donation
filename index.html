@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Donations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+.font-arabic {
+  font-family: 'Cairo', sans-serif;
+}
+</style>
+
+<style>
+/* Better RTL spacing */
+body[dir="rtl"] .text-center {
+  text-align: center;
+}
+
+body[dir="rtl"] .flex {
+  flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+</style>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+</head>
+
+<script>
+const translations = {
+  en: {
+    mission_title: "Our Mission",
+    mission_text1: "We are building a community-driven project focused on creating real impact. Our goal is to use decentralized funding to support innovation, education, and meaningful change.",
+    mission_text2: "Every donation you make goes directly toward improving our project, expanding our reach, and helping people in need.",
+
+    impact_title: "What Your Donation Supports",
+    impact1_title: "🌍 Community Growth",
+    impact1_text: "Helping us reach more people and grow our community.",
+    impact2_title: "⚙️ Development",
+    impact2_text: "Funding tools, features, and improvements.",
+    impact3_title: "📢 Awareness",
+    impact3_text: "Spreading our mission to a global audience."
+  },
+
+  ar: {
+    mission_title: "مهمتنا",
+    mission_text1: "نحن نبني مشروعًا يقوده المجتمع يركز على إحداث تأثير حقيقي. هدفنا هو استخدام التمويل اللامركزي لدعم الابتكار والتعليم والتغيير الهادف.",
+    mission_text2: "كل تبرع تقدمه يساهم مباشرة في تطوير مشروعنا وتوسيع نطاقه ومساعدة المحتاجين.",
+
+    impact_title: "ماذا تدعم تبرعاتك",
+    impact1_title: "🌍 نمو المجتمع",
+    impact1_text: "مساعدتنا في الوصول إلى المزيد من الأشخاص وبناء مجتمع قوي.",
+    impact2_title: "⚙️ التطوير",
+    impact2_text: "تمويل الأدوات والميزات والتحسينات.",
+    impact3_title: "📢 نشر الوعي",
+    impact3_text: "نشر مهمتنا إلى جمهور عالمي."
+  }
+};
+
+function setLanguage(lang) {
+  document.documentElement.lang = lang;
+
+  if (lang === "ar") {
+    document.body.dir = "rtl";
+    document.body.classList.add("font-arabic");
+  } else {
+    document.body.dir = "ltr";
+    document.body.classList.remove("font-arabic");
+  }
+
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const key = el.getAttribute("data-key");
+    el.innerText = translations[lang][key];
+  });
+
+  localStorage.setItem("lang", lang);
+}
+
+// AUTO DETECT
+window.onload = () => {
+  const savedLang = localStorage.getItem("lang");
+
+  if (savedLang) {
+    setLanguage(savedLang);
+  } else {
+    const userLang = navigator.language || navigator.userLanguage;
+
+    if (userLang.startsWith("ar")) {
+      setLanguage("ar");
+    } else {
+      setLanguage("en");
+    }
+  }
+};
+</script>
+
+<script>
+const flyerInput = document.getElementById("flyerInput");
+const flyerPreview = document.getElementById("flyerPreview");
+
+flyerInput.addEventListener("change", function() {
+  const file = this.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      flyerPreview.src = e.target.result;
+      flyerPreview.classList.remove("hidden");
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+</script>
+
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+
+    <div class="flex justify-end p-4">
+        <button onclick="setLanguage('en')" class="mx-1 bg-gray-700 px-3 py-1 rounded">English</button>
+        <button onclick="setLanguage('ar')" class="mx-1 bg-gray-700 px-3 py-1 rounded">العربية</button>
+    </div>
+
+<!-- HERO -->
+<section class="text-center py-16 px-6">
+  <h1 class="text-4xl font-bold mb-4">Support Our Mission 🚀</h1>
+  <p class="text-gray-400 max-w-xl mx-auto">
+    We rely on crypto donations to fund our work. Every contribution helps us grow and make an impact.
+  </p>
+</section>
+
+<!-- ABOUT / MISSION -->
+<section class="bg-gray-800 py-16 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+
+    <h2 class="text-3xl font-bold mb-6" data-key="mission_title">Our Mission</h2>
+
+    <p class="text-gray-300 mb-6 leading-relaxed" data-key="mission_text1">
+      We are building a community-driven project focused on creating real impact.
+      Our goal is to use decentralized funding to support innovation, education,
+      and meaningful change without relying on traditional systems.
+    </p>
+
+    <p class="text-gray-400 leading-relaxed" data-key="mission_text2">
+      Every donation you make goes directly toward improving our project,
+      expanding our reach, and helping us deliver value to people who need it most.
+      With your support, we can grow faster and stay independent.
+    </p>
+
+  </div>
+</section>
+
+<!-- IMPACT SECTION -->
+<section class="py-16 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+
+    <h2 class="text-3xl font-bold mb-10" data-key="impact_title">What Your Donation Supports</h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="bg-gray-800 p-6 rounded-2xl">
+        <h3 class="text-xl font-semibold mb-3" data-key="impact1_title">🌍 Community Growth</h3>
+        <p class="text-gray-400" data-key="impact1_text">
+          Helping us reach more people and build a strong, engaged community.
+        </p>
+      </div>
+
+      <div class="bg-gray-800 p-6 rounded-2xl">
+        <h3 class="text-xl font-semibold mb-3" data-key="impact2_title">⚙️ Development</h3>
+        <p class="text-gray-400" data-key="impact2_text">
+          Funding tools, features, and improvements to keep the project evolving.
+        </p>
+      </div>
+
+      <div class="bg-gray-800 p-6 rounded-2xl">
+        <h3 class="text-xl font-semibold mb-3" data-key="impact3_title">📢 Awareness</h3>
+        <p class="text-gray-400" data-key="impact3_text">
+          Promoting the mission and expanding our impact globally.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- NGO FLYER SECTION -->
+<section class="py-16 px-6 text-center" data-aos="fade-up">
+
+  <h2 class="text-3xl font-bold mb-6">Our Official Flyer</h2>
+
+  <p class="text-gray-400 mb-6">
+    View or upload our NGO flyer for more details about our mission and impact.
+  </p>
+
+  <!-- Upload Button -->
+  <input type="file" id="flyerInput" accept="image/*"
+    class="mb-6 block mx-auto text-sm text-gray-400">
+
+  <!-- Image Preview -->
+  <div class="flex justify-center">
+    <img id="flyerPreview" class="hidden max-w-md rounded-2xl shadow-lg border border-gray-700"/>
+  </div>
+
+</section>
+
+<!-- DONATION SECTION -->
+<section class="max-w-4xl mx-auto px-6 py-10">
+
+  <!-- BTC -->
+  <div class="bg-gray-800 rounded-2xl p-6 mb-6 shadow-lg">
+    <h2 class="text-xl font-semibold mb-2">Bitcoin (BTC)</h2>
+    <p id="btc" class="break-all text-gray-300 mb-4">bc1xxxxxxxxxxxx</p>
+    
+    <div class="flex gap-4 items-center justify-between">
+      <button onclick="copy('btc')" class="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600">
+        Copy Address
+      </button>
+
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=bc1xxxxxxxxxxxx&size=100x100" />
+    </div>
+  </div>
+
+  <!-- ETH -->
+  <div class="bg-gray-800 rounded-2xl p-6 shadow-lg">
+    <h2 class="text-xl font-semibold mb-2">Ethereum (ETH)</h2>
+    <p id="eth" class="break-all text-gray-300 mb-4">0xabcxxxxxxxxxxx</p>
+
+    <div class="flex gap-4 items-center justify-between">
+      <button onclick="copy('eth')" class="bg-purple-500 px-4 py-2 rounded-lg hover:bg-purple-600">
+        Copy Address
+      </button>
+
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=0xabcxxxxxxxxxxx&size=100x100" />
+    </div>
+  </div>
+
+</section>
+
+<!--Tracker-->
+<section class="py-16 text-center" data-aos="fade-up">
+  <h2 class="text-3xl font-bold mb-4">Total Donations</h2>
+  <p id="donationAmount" class="text-4xl text-green-400">$0</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center text-gray-500 py-6">
+  <p>© 2026 Your Project. Built with ❤️</p>
+</footer>
+
+<script>
+let amount = 0;
+
+// Fake animation (replace with real later)
+function animateDonations(target) {
+  let count = 0;
+  const interval = setInterval(() => {
+    count += Math.ceil(target / 50);
+    if (count >= target) {
+      count = target;
+      clearInterval(interval);
+    }
+    document.getElementById("donationAmount").innerText = "$" + count;
+  }, 50);
+}
+
+// Example value
+animateDonations(1250);
+</script>
+
+<script>
+function copy(id) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Wallet address copied!");
+}
+</script>
+
+</body>
+</html>
