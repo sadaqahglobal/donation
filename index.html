@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="icon" href="images/relieficon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     .font-arabic { font-family: 'Cairo', sans-serif; }
@@ -14,6 +15,8 @@
     body[dir="rtl"] .flex { flex-direction: row-reverse; }
     body[dir="rtl"] .ml-auto { margin-left: 0; margin-right: auto; }
     body{font-size: xx-large;}
+    a i:hover {text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
@@ -136,6 +139,27 @@ Share their stories, spread the word, and fulfill the duty of brotherhood.
   <p id="donationAmount" class="text-4xl text-green-400">$0</p>
 </section>
 
+<!-- SOCIAL MEDIA -->
+<section class="py-10 text-center" data-aos="fade-up">
+  <h2 class="text-2xl font-bold mb-4" data-key="social_title">Follow Us</h2>
+
+  <div class="flex justify-center gap-8 text-3xl">
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/sadaqahglobal2026/" target="_blank"
+       class="hover:text-pink-500 hover:scale-125 transition duration-300">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://www.tiktok.com/@sadaqahglobal" target="_blank"
+       class="hover:text-white hover:scale-125 transition duration-300">
+      <i class="fab fa-tiktok"></i>
+    </a>
+
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="text-center text-gray-500 py-6">
   <p data-key="footer_text">© 2026 Sadaqah Global. Built with ❤️</p>
@@ -168,6 +192,7 @@ const translations = {
     btc_title: "USDT (ERC20)",
     eth_title: "Bitcoin (BTC)",
     copy_button: "Copy Address",
+    social_title: "Follow Us",
     tracker_title: "Total Donations",
     footer_text: "© 2026 Your Project. Built with ❤️"
   },
@@ -192,6 +217,7 @@ const translations = {
     eth_title: "إيثيريوم (ETH)",
     copy_button: "نسخ العنوان",
     tracker_title: "إجمالي التبرعات",
+    social_title: "تابعنا",
     footer_text: "© 2026 مشروعك. تم البناء ❤️"
   }
 };
